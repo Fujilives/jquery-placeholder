@@ -27,13 +27,13 @@ Check out the [demos](http://diy.github.com/jquery-placeholder/)!
 
 ### CSS Styling has changed
 
-```new css
+``` new css
 .centered { display:block; position:relative !important; margin: 0 auto !important; }
 .placeholder-container.centered .placeholder { color:blue !important; }
 .placeholder { color: #d0d0d0; }
 ```
 
-```old css
+``` old css
 .placeholder { color: #d0d0d0; }
 ::-webkit-input-placeholder { color: #d0d0d0; }
 input:-moz-placeholder, textarea:-moz-placeholder { color: #d0d0d0; }
