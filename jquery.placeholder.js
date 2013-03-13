@@ -12,6 +12,19 @@
  * governing permissions and limitations under the License.
  *
  * @author Brian Reavis <brian@thirdroute.com>
+ *
+ *
+ * Updated by Fujilives
+ *
+ * + New method to fix relative div centering and allow proper fixed absolute positioning
+ *
+ * + Does not support window resizing of absolute positioning via percentages, 
+ *   because Jquery cannot determine PX or % and only pulls PX as a result
+ * 
+ * + Was unable to determine a way to pull margin auto values properly, so centering has to be done
+ *   by applying a container div with the "centered" class applied instead of the standard container.
+ *
+ * 
  */
 (function($) {
 
@@ -69,7 +82,12 @@
 		
 	
 		// create the placeholder container div - needs to be created before PH overlay span
-		$container = $('<div>').addClass('placeholder-container');
+		if ( $(input).hasClass("centered") ) {
+			$container = $('<div>').addClass('placeholder-container centered');
+		} else {
+			$container = $('<div>').addClass('placeholder-container');
+		}
+		
 		$container.css(container_styles);
 		$container.css({
 			'cursor': $input.css('cursor') || 'text',
@@ -94,13 +112,15 @@
 			'padding-left': '0',
 			'padding-top': '0',
 			'padding-bottom': '0',
-			'margin-right': 'auto',
-			'margin-left': 'auto',
-			'margin-top': 'auto',
-			'margin-bottom': 'auto',
+			//'margin-right': '0',
+			//'margin-left': '0',
+			//'margin-top': '0',
+			//'margin-bottom': '0',
 			'width': ( parseInt($container.css("width")) + parseInt($container.css("padding-left")) + parseInt($container.css("padding-right")) + parseInt($(input).css("border-left-width")) + parseInt($(input).css("border-right-width")) ) + 'px',
 			'height': ( parseInt($container.css("height")) + parseInt($container.css("padding-top")) + parseInt($container.css("padding-bottom")) + parseInt($(input).css("border-top-width")) + parseInt($(input).css("border-bottom-width")) ) + 'px',
 		});
+		
+		
 		$(input).wrap($container);
 		
 
@@ -133,7 +153,11 @@
 			'top': 'auto',
 			'right': 'auto',
 			'bottom': 'auto',
-			'left': 'auto'
+			'left': 'auto',
+			'margin-right': '0',
+			'margin-left': '0',
+			'margin-top': '0',
+			'margin-bottom': '0',
 		});
 		
 		
