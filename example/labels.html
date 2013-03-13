@@ -16,7 +16,8 @@ $(document).ready(function(){
 <style>
 .centered { display:block; position:relative !important; margin: 0 auto !important; }
 .placeholder-container.centered .placeholder { color:blue !important; }
-.placeholder { color: red; }
+.placeholder { color: purple; }
+.errorcontainer { color: red; background:lightyellow; border: 1px; }
 
 .ui-input-text {
 	position: relative;
@@ -153,6 +154,17 @@ $(document).ready(function(){
 	left:500px;
 }
 
+#text-label-9 {
+	float:left;
+	width:280px;
+}
+
+#text-field-9 {
+	float:left;
+	width:300px;
+	text-align:left;
+}
+
 </style>
 </head>
 
@@ -199,8 +211,17 @@ $(document).ready(function(){
 </div>
 
 <div class="ui-field-container">
+  <label id="text-label-9" class="ui-input-text">Error Overlay Test</label>
+</div>
+
+<div class="ui-field-container">
+  <input id="text-field-9" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+  <input errortext="Overlay Error" id="text-field-9" class="errorclass ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+</div>
+
+<div class="ui-field-container">
   <label id="text-label-8" class="ui-input-text">Absolutely Positioned Input</label>
-  <input id="text-field-8" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+  <input alt="blah" id="text-field-8" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
 </div>
 
 </body>

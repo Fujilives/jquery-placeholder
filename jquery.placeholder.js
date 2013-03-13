@@ -52,7 +52,6 @@
 	var setupPlaceholder = function(input, options) {
 		var i, evt, text, styles, zIndex, marginTop, dy, attrNode;
 		var $input = $(input), $placeholder;
-
 		try {
 			attrNode = $input[0].getAttributeNode('placeholder');
 			if (!attrNode) return;
@@ -159,6 +158,41 @@
 		$placeholder.insertBefore($input);
 		
 		
+		// create the placeholder container div - needs to be created before PH overlay span
+		if ( $(input).hasClass("errorclass") ) {
+			$errorcontainer = $('<div>').addClass('errorcontainer errorclass').html(text);
+			$errorcontainer.css(placeholder_styles);
+			$errorcontainer.css({
+				'cursor': $input.css('cursor') || 'text',
+				'display': 'block',
+				'position': 'absolute',
+				'overflow': 'hidden',
+				'z-index': zIndex + 2,
+				'border-top-style': 'solid',
+				'border-right-style': 'solid',
+				'border-bottom-style': 'solid',
+				'border-left-style': 'solid',
+				'line-height': $(input).css("height"),
+				'margin-top': '0',
+				'margin-bottom': '0',
+				'left': '50%',
+				'text-align': 'center',
+				'margin-left': (parseInt($errorcontainer.css("width")) / -2) + (parseInt($errorcontainer.css("padding-left")) * -1) - parseInt($(input).css("border-left-width")) + 'px'
+			});
+			
+			$errorcontainer.insertBefore($input);
+			
+			if ( $(input).attr("errortext") != null && $(input).attr("errortext") != "" ) {
+				$errorcontainer.html( $(input).attr("errortext") );
+			} else {
+				$errorcontainer.html( "Please Correct" );
+			}
+			
+		} else {
+				//donothing
+		}
+		
+		
 		$(input).css({
 			'top': 'auto',
 			'right': 'auto',
@@ -177,7 +211,7 @@
 		if (isNaN(marginTop)) marginTop = 0;
 		$placeholder.css('margin-top', marginTop + dy);
 
-		// event handlers + add to document
+		// placeholder event handlers + add to document
 		$placeholder.on('mousedown', function() {
 			if (!$input.is(':enabled')) return;
 			window.setTimeout(function(){
@@ -199,7 +233,16 @@
 		};
 
 		$input.trigger('blur.placeholder');
-	};
+		
+		
+		// errorcontainer event handlers + add to document
+		$(".errorcontainer").on('mouseenter', function() {
+				$(this).hide();
+		});
+		
+		
+		
+		};
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
