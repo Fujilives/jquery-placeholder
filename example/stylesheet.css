@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 * input { position:relative; margin: 0;}
-.centered { display:block; position:relative !important; margin: 0 auto !important; }
+.centered { position:relative !important; margin: 0 auto !important; }
 .placeholder-container.centered .placeholder { color:blue !important; }
 .placeholder { color: red; }
 

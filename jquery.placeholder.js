@@ -89,9 +89,20 @@
 		}
 		
 		$container.css(container_styles);
+		
+		if ( $(input).hasClass("centered") ) {
+			$container.css({
+				'display': 'block'
+			});
+		} else {
+			$container.css({
+				'display': 'inline-block'
+			});
+		}
+		
 		$container.css({
 			'cursor': $input.css('cursor') || 'text',
-			'display': 'block',
+			//'display': 'block',
 			//'position': 'relative',
 			'overflow': 'hidden',
 			'z-index': zIndex + 1,
@@ -119,7 +130,6 @@
 			'width': ( parseInt($container.css("width")) + parseInt($container.css("padding-left")) + parseInt($container.css("padding-right")) + parseInt($(input).css("border-left-width")) + parseInt($(input).css("border-right-width")) ) + 'px',
 			'height': ( parseInt($container.css("height")) + parseInt($container.css("padding-top")) + parseInt($container.css("padding-bottom")) + parseInt($(input).css("border-top-width")) + parseInt($(input).css("border-bottom-width")) ) + 'px',
 		});
-		
 		
 		$(input).wrap($container);
 		
