@@ -9,12 +9,12 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $('input,textarea').placeholder({force: true});
+	$('input,textarea').placeholder({force: true});
 });
 </script>
 
 <style>
-.placeholder-container.centered { position:relative !important; margin: 0 auto !important; }
+.centered { display:block; position:relative !important; margin: 0 auto !important; }
 .placeholder-container.centered .placeholder { color:blue !important; }
 .placeholder { color: red; }
 
