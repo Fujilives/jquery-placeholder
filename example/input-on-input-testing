@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.placeholder.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('input,textarea').placeholder({force: true});
+});
+</script>
+
+<style>
+.placeholder-container.centered { position:relative !important; margin: 0 auto !important; }
+.placeholder-container.centered .placeholder { color:blue !important; }
+.placeholder { color: red; }
+
+.ui-input-text {
+	position: relative;
+	display: block;
+	font-size: 18px;
+	line-height: 24px;
+	height:24px;
+	outline: 0 none;
+	border: 1px solid transparent;
+	text-align: left;
+	padding:8px;
+}
+
+.ui-input-style {
+    border: 1px solid #AAAAAA;
+    color: #333333;
+    text-shadow: 0 1px 0 #FFFFFF;
+	
+	box-shadow: 		0 1px 4px rgba(0, 0, 0, 0.2) inset;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
+	-moz-box-shadow: 	0 1px 4px rgba(0, 0, 0, 0.2) inset;
+	background:#DFDFDF;
+}
+
+.ui-input-style:focus {
+	box-shadow:			none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: 	none;
+	background:#E9E9E9;
+}
+
+.ui-corner-all {
+    border-radius: 8px 8px 8px 8px;
+}
+
+.ui-field-container {
+	width: 100%;
+	display: block;
+	position: relative;
+	clear: both;
+	float: left;
+}
+
+#text-label-1 {
+	float:left;
+	width:280px;
+}
+
+#text-field-1 {
+	float:left;
+	width:300px;
+	text-align:left;
+}
+
+#text-label-2 {
+	float:left;
+	width:280px;
+}
+
+#text-field-2 {
+	float:left;
+	width:300px;
+	text-align:right;
+}
+
+#text-label-3 {
+	float:right;
+	width:280px;
+}
+
+#text-field-3 {
+	float:right;
+	width:300px;
+	text-align:right;
+}
+
+#text-label-4 {
+	float:right;
+	width:280px;
+}
+
+#text-field-4 {
+	float:right;
+	width:300px;
+	text-align:left;
+}
+
+#text-label-5 {
+	float:left;
+	width:280px;
+}
+
+#text-field-5 {
+	width: 600px;
+	text-align: center;
+	margin:0 auto;
+}
+
+#text-label-6 {
+	float:left;
+	width:280px;
+	margin:0 auto;
+}
+
+#text-field-6 {
+	width:30px;
+	text-align:center;
+	margin:0 auto;
+}
+
+#text-label-7 {
+	float:left;
+	width:280px;
+}
+
+#text-field-7 {
+	float:left;
+	width:300px;
+	text-align:center;
+	padding:45px;
+}
+
+#text-label-8 {
+	float:left;
+	width:280px;
+}
+
+#text-field-8 {
+	position:absolute;
+	width:300px;
+	height:300px;
+	text-align:left;
+	top:20px;
+	left:500px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="ui-field-container">
+  <label id="text-label-1" class="ui-input-text">Float Left with Text-Align Left</label>
+  <input id="text-field-1" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-2" class="ui-input-text">Float Left with Text-Align Right</label>
+  <input id="text-field-2" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-3" class="ui-input-text">Float Right with Text-Align Left</label>
+  <input id="text-field-3" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: right">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-4" class="ui-input-text">Float Right with Text-Align Right</label>
+  <input id="text-field-4" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: right">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-5" class="ui-input-text">Centered Div</label>
+</div>
+
+<div class="ui-field-container">
+  <input id="text-field-5" class="centered ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: center">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-6" class="centered ui-input-text">Text Too Big for Centered Div</label>
+</div>
+
+<div class="ui-field-container">
+   <input id="text-field-6" class="centered ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: center">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-7" class="ui-input-text">Really Big Padding</label>
+  <input id="text-field-7" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: center">
+</div>
+
+<div class="ui-field-container">
+  <label id="text-label-8" class="ui-input-text">Absolutely Positioned Input</label>
+  <input id="text-field-8" class="ui-input-text ui-input-style ui-corner-all ui-shadow-inset" type="text" value="" name="text-p-1" placeholder="text-align: left">
+</div>
+
+</body>
+</html>
