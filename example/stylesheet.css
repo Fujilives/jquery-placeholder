@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
-.placeholder { color: #a0a0a0; }
-::-webkit-input-placeholder { color: #a0a0a0; }
-:-moz-placeholder { color: #a0a0a0; }
+* input { position:relative; margin: 0;}
+.placeholder { color: red; }
+.placeholder-container.centered { position:relative !important; margin: 0 auto !important; }
+.placeholder-container.centered .placeholder { color:blue !important; }
 #demos { margin-bottom: 30px; }
 #demos ul { list-style: none; margin: 0; padding: 0; }
 #demos ul li { margin: 0 0 15px 0; padding: 15px; background: #fefefe; border: 1px solid #e8e8e8; -webkit-border-radius: 4px; -moz-border-radius: 4px; box-shadow: 0 2px 2px rgba(0,0,0,0.1); -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.1); }
@@ -23,4 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p, ul, ol, table, pre, dl {
   margin:0 0 20px;
+}
+
+p.field {
 }
