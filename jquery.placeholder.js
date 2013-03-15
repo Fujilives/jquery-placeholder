@@ -89,21 +89,11 @@
 		
 		$container.css(container_styles);
 		
-		if ( $(input).hasClass("centered") ) {
-			$container.css({
-				'display': 'block'
-			});
-		} else {
-			$container.css({
-				'display': 'inline-block'
-			});
-		}
-		
 		$container.css({
 			'cursor': $input.css('cursor') || 'text',
 			//'display': 'block',
 			//'position': 'relative',
-			'overflow': 'hidden',
+			//'overflow': 'hidden', <-- disabled to correct original input position
 			'z-index': zIndex + 1,
 			'background': 'none',
 			'border-top-style': 'solid',
@@ -130,6 +120,22 @@
 			'height': ( parseInt($container.css("height")) + parseInt($container.css("padding-top")) + parseInt($container.css("padding-bottom")) + parseInt($(input).css("border-top-width")) + parseInt($(input).css("border-bottom-width")) ) + 'px',
 		});
 		
+		if ( $(input).hasClass("centered") ) {
+			$container.css({
+				'display': 'block',
+				'position': 'relative',
+				'margin-top': '0',
+				'margin-right': 'auto',
+				'margin-bottom': '0',
+				'margin-left': 'auto',
+				'float': 'none',
+			});
+		} else {
+			$container.css({
+				'display': 'inline-block'
+			});
+		}
+		
 		$(input).wrap($container);
 		
 
@@ -152,19 +158,31 @@
 			'border-bottom-color': 'transparent',
 			'border-left-color': 'transparent',
 			'line-height': $(input).css("height"),
-			'left': '50%',
-			'margin-left': (parseInt($placeholder.css("width")) / -2) + (parseInt($placeholder.css("padding-left")) * -1) - parseInt($(input).css("border-left-width")) + 'px'
+			'margin-top': '0',
+			'margin-right': '0',
+			'margin-bottom': '0',
+			'margin-left': '0',		
+			
+			//'left': '50%',
+			//'margin-left': (parseInt($placeholder.css("width")) / -2) + (parseInt($placeholder.css("padding-left")) * -1) - parseInt($(input).css("border-left-width")) + 'px'
 		});
 		$placeholder.insertBefore($input);
 		
 		
-		// create the placeholder container div - needs to be created before PH overlay span
-		if ( $(input).hasClass("errorclass") ) {
-			$errorcontainer = $('<div>').addClass('errorcontainer errorclass').html(text);
+		
+		// To testing an error overlay, you can load it by adding the class errortest to an input	
+		// Note: ".errorcontainer" is the divs default class, ".error" is added for the sake of jquery validate - so overlay will show on first submit click even if nothing has had focus yet
+		if ( $(input).hasClass("errortest") ) {
+			$errorcontainer = $('<div>').addClass('errorcontainer error show').html(text);
+		} else {
+			$errorcontainer = $('<div>').addClass('errorcontainer error').html(text);
+		}
+		
+		
 			$errorcontainer.css(placeholder_styles);
 			$errorcontainer.css({
 				'cursor': $input.css('cursor') || 'text',
-				'display': 'block',
+				//'display': 'none',
 				'position': 'absolute',
 				'overflow': 'hidden',
 				'z-index': zIndex + 2,
@@ -174,10 +192,12 @@
 				'border-left-style': 'solid',
 				'line-height': $(input).css("height"),
 				'margin-top': '0',
+				'margin-right': '0',
 				'margin-bottom': '0',
-				'left': '50%',
-				'text-align': 'center',
-				'margin-left': (parseInt($errorcontainer.css("width")) / -2) + (parseInt($errorcontainer.css("padding-left")) * -1) - parseInt($(input).css("border-left-width")) + 'px'
+				'margin-left': '0'
+				//removed text-align from here, instead put it in css so it can be customized with an !important tag
+				//'left': '50%',
+				//'margin-left': (parseInt($errorcontainer.css("width")) / -2) + (parseInt($errorcontainer.css("padding-left")) * -1) - parseInt($(input).css("border-left-width")) + 'px'
 			});
 			
 			$errorcontainer.insertBefore($input);
@@ -187,12 +207,9 @@
 			} else {
 				$errorcontainer.html( "Please Correct" );
 			}
-			
-		} else {
-				//donothing
-		}
 		
 		
+		// zero out parts of the input we placed on the Div instead - this makes things line up nicely
 		$(input).css({
 			'top': 'auto',
 			'right': 'auto',
@@ -237,7 +254,8 @@
 		
 		// errorcontainer event handlers + add to document
 		$(".errorcontainer").on('mouseenter', function() {
-				$(this).hide();
+				//the .errorcontainer.show style will have display:block, while default of just .errorcontainer will be display:none
+				$(this).removeClass("show");
 		});
 		
 		
